@@ -25,3 +25,8 @@ runs:
       run: |
         rmdir /s /q 7-Zip\Files
         del /s /q 7-Zip\7z2401-x64.msi
+
+    - name: clean up
+      shell: cmd
+      working-directory: ${{ runner.temp }}
+      run: echo ${{ runner.temp }}\7-Zip>> $GITHUB_PATH
