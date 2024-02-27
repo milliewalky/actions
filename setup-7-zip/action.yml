@@ -8,6 +8,7 @@ runs:
       shell: cmd
       working-directory: ${{ runner.temp }}
       run: curl -L -o 7z2401-x64.msi https://www.7-zip.org/a/7z2401-x64.msi
+
     - name: unpack 7-zip
       shell: cmd
       working-directory: ${{ runner.temp }}
