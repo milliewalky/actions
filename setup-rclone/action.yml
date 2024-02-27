@@ -24,7 +24,9 @@ runs:
     - name: 'rclone.conf' from secret
       shell: pwsh
       working-directory: ${{ runner.temp }}
-      run: [IO.File]::WriteAllBytes("rclone\rclone.conf", [Convert]::FromBase64String($env:rclone_config))
+      run: [IO.File]::WriteAllBytes("rclone\rclone.conf", [Convert]::FromBase64String($env:conf))
+      env:
+        conf: ${{ inputs.conf }}
 
     - name: add rclone to path
       shell: cmd
