@@ -19,13 +19,6 @@ runs:
       working-directory: ${{ runner.temp }}
       run: move 7-Zip\Files\7-Zip\* 7-Zip
 
-    - name: clean up
-      shell: cmd
-      working-directory: ${{ runner.temp }}
-      run: |
-        rmdir /s /q 7-Zip\Files
-        del /s /q 7-Zip\7z2401-x64.msi
-
     - name: add 7-zip to path
       shell: cmd
       working-directory: ${{ runner.temp }}
