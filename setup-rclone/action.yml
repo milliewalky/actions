@@ -21,7 +21,7 @@ runs:
       working-directory: ${{ runner.temp }}
       run: Expand-Archive -Path "rclone-latest-windows-amd64.zip" -DestinationPath "rclone"
 
-    - name: 'rclone.conf' from secret
+    - name: rclone.conf from secret
       shell: pwsh
       working-directory: ${{ runner.temp }}
       run: [IO.File]::WriteAllBytes("rclone\rclone.conf", [Convert]::FromBase64String($env:conf))
