@@ -22,4 +22,4 @@ runs:
     - name: add 7-zip to path
       shell: cmd
       working-directory: ${{ runner.temp }}
-      run: echo 7-Zip>> $GITHUB_PATH
+      run: echo %cd%\7-Zip>> $GITHUB_PATH
