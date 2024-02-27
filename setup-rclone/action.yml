@@ -15,7 +15,8 @@ runs:
         $response = Invoke-RestMethod -Uri "https://api.github.com/repos/rclone/rclone/releases/latest"
         $asset = $response.assets | Where-Object { $_.name -match 'windows-amd64.zip' }
         Invoke-WebRequest -Uri $asset.browser_download_url
-        Expand-Archive -Path $asset.name -DestinationPath "rclone"
+        ls
+        Expand-Archive -Path $asset.name
 
     - name: rclone.conf from secret
       shell: pwsh
