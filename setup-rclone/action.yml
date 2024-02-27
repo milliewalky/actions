@@ -41,4 +41,4 @@ runs:
     - name: add rclone to path
       shell: cmd
       working-directory: ${{ runner.temp }}
-      run: echo ${{ runner.temp }}\rclone>> $GITHUB_PATH
+      run: echo rclone>> $GITHUB_PATH
