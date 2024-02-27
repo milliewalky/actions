@@ -4,10 +4,6 @@ description: download and unpack 7-zip for gh actions
 runs:
   using: composite
   steps:
-    - name: check cwd
-      shell: cmd
-      run: echo %cd%
-
     - name: download 7-zip
       shell: cmd
       working-directory: ${{ runner.temp }}
@@ -17,13 +13,3 @@ runs:
       shell: cmd
       working-directory: ${{ runner.temp }}
       run: msiexec /a 7z2401-x64.msi /qb TARGETDIR=%cd%\7-zip
-
-    - name: check dir
-      shell: cmd
-      working-directory: ${{ runner.temp }}
-      run: dir %cd%
-
-    - name: check 7-zip manual
-      shell: cmd
-      working-directory: ${{ runner.temp }}
-      run: call %cd%\7-zip\7z.exe -h
