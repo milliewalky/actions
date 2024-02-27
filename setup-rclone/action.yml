@@ -13,11 +13,9 @@ runs:
       working-directory: ${{ runner.temp }}
       run: |
         $response = Invoke-RestMethod -Uri "https://api.github.com/repos/rclone/rclone/releases/latest"
-        $asset = $response.assets | Where-Object { $_.name -match 'windows-amd64.zip' } | Select-Object -ExpandProperty browser_download_url
-        $url = $asset.browser_download_url
-        $name = $asset.name
-        Invoke-WebRequest -Uri $url
-        Expand-Archive -Path $name -DestinationPath "rclone"
+        $asset = $response.assets | Where-Object { $_.name -match 'windows-amd64.zip' }
+        Invoke-WebRequest -Uri $asset.browser_download_url
+        Expand-Archive -Path $asset.name -DestinationPath "rclone"
 
     - name: rclone.conf from secret
       shell: pwsh
