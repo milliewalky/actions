@@ -3,7 +3,11 @@ description: download and unpack 7-zip for gh actions
     
 runs:
   using: composite
-  steps:            
+  steps:
+    - name: check cwd
+      shell: cmd
+      run: echo %cd%
+
     - name: download 7-zip
       shell: cmd
       working-directory: ${{ runner.temp }}
