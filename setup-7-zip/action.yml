@@ -17,3 +17,13 @@ runs:
       shell: cmd
       working-directory: ${{ runner.temp }}
       run: msiexec /a 7z2401-x64.msi /qb TARGETDIR=%cd%\7-zip
+
+    - name: check dir
+      shell: cmd
+      working-directory: ${{ runner.temp }}
+      run: dir %cd%
+
+    - name: check 7-zip manual
+      shell: cmd
+      working-directory: ${{ runner.temp }}
+      run: call %cd%\7-zip\7z.exe -h
