@@ -13,3 +13,15 @@ runs:
       shell: cmd
       working-directory: ${{ runner.temp }}
       run: msiexec /a 7z2401-x64.msi /qb TARGETDIR=%cd%\7-zip
+
+    - name: rearrange files
+      shell: cmd
+      working-directory: ${{ runner.temp }}
+      run: move 7-zip\Files\7-Zip\* 7-zip
+
+    - name: clean up
+      shell: cmd
+      working-directory: ${{ runner.temp }}
+      run: |
+        rmdir /s /q 7-zip\Files
+        del /s /q 7-zip\7z2401-x64.msi
