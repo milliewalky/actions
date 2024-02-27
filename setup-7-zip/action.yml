@@ -1,27 +1,27 @@
-name: setup 7-zip action
-description: download and unpack 7-zip for gh actions
+name: setup 7-Zip action
+description: download and unpack 7-Zip for gh actions
     
 runs:
   using: composite
   steps:
-    - name: download 7-zip
+    - name: download 7-Zip
       shell: cmd
       working-directory: ${{ runner.temp }}
       run: curl -L -o 7z2401-x64.msi https://www.7-zip.org/a/7z2401-x64.msi
 
-    - name: unpack 7-zip
+    - name: unpack 7-Zip
       shell: cmd
       working-directory: ${{ runner.temp }}
-      run: msiexec /a 7z2401-x64.msi /qb TARGETDIR=%cd%\7-zip
+      run: msiexec /a 7z2401-x64.msi /qb TARGETDIR=%cd%\7-Zip
 
     - name: rearrange files
       shell: cmd
       working-directory: ${{ runner.temp }}
-      run: move 7-zip\Files\7-Zip\* 7-zip
+      run: move 7-Zip\Files\7-Zip\* 7-Zip
 
     - name: clean up
       shell: cmd
       working-directory: ${{ runner.temp }}
       run: |
-        rmdir /s /q 7-zip\Files
-        del /s /q 7-zip\7z2401-x64.msi
+        rmdir /s /q 7-Zip\Files
+        del /s /q 7-Zip\7z2401-x64.msi
